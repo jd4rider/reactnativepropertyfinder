@@ -57,7 +57,7 @@ export default class SearchResults extends Component<{}> {
         console.log(this.props.listings)
         return (
             <FlatList
-                data={this.props.listings}
+                data={this.props.navigation.getParam('listings')}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
             />
