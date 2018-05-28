@@ -17,6 +17,7 @@ import {
   createStackNavigator
 } from 'react-navigation';
 import SearchPage from './SearchPage';
+import SearchResults from './SearchResults';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -40,6 +41,13 @@ const RootStack = createStackNavigator({
       headerTitleStyle: styles.container,
     }),
   },
+ SearchRes: {
+    screen: SearchResults,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Results',
+      headerTitleStyle: styles.container,
+    }),
+  }, 
 });
 
 export default class App extends Component<Props> {

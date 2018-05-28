@@ -10,7 +10,14 @@ import {
     ActivityIndicator,
     Image,
 } from 'react-native';
+/* import {
+    createStackNavigator
+} from 'react-navigation'; */
 import SearchResults from './SearchResults';
+
+//const Appz = createStackNavigator({
+  //  SearchRes: { screen: SearchResults },
+//});
 
 function urlForQueryAndPage(key, value, pageNumber) {
     const data = {
@@ -39,6 +46,8 @@ export default class SearchPage extends Component<{}> {
             message: '',
         };
     }
+
+    
     _executeQuery = (query) => {
         console.log(query);
         this.setState({ isLoading: true });
@@ -64,7 +73,9 @@ export default class SearchPage extends Component<{}> {
     _handleResponse = (response) => {
         this.setState({ isLoading: false, message: '' });
         if (response.application_response_code.substr(0, 1) === '1') {
-            console.log('Properties found: ' + response.listings.length);
+            //console.log(SearchRes)
+            console.log(response.listings)
+            this.props.navigation.push('SearchRes', { listings: response.listings });
         } else {
             this.setState({ message: 'Location not recognized; please try again.' });
         }
